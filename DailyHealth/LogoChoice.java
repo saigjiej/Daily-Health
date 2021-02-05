@@ -298,6 +298,7 @@ public class LogoChoice {
 					BmiResult.setBounds(48, 261, 874, 43);
 					BmiResult.setVisible(true);	
 				}//end of if~else if~else문
+				// bmi db에 추가하는 코드
 			}
 		});
 		
@@ -336,6 +337,18 @@ public class LogoChoice {
 						BmiPanel.setVisible(false);//BmiPanel이 화면에 나오지 않게 한다
 					}
 				});
+		
+		JButton customerBtn = new JButton("<html>회원 페이지로 가는 임시 버튼입니당<br>개발 다 하고 디자인 할 때 없앨 거에요!</html>");
+		customerBtn.setBounds(650, 450, 260, 80);
+		ChoicePanel.add(customerBtn);
+		
+		customerBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false); //이 클래스의 frame을 닫아준다
+				new CustomerLoginDisplay(); //MainDisplay클래스를 실행한다
+			}
+		});
 		
 		JButton MemberProfile = new JButton("");
 		MemberProfile.setBounds(208, 180, 203, 202);
