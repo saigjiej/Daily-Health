@@ -19,6 +19,18 @@ public class CustomerLoginDisplay extends JFrame implements MouseListener,Action
 	JTextField idField;
 	JPasswordField pwField;
 	
+	String name = "";
+	String id = "";
+	String address = "";
+	String phone = "";
+	String age = "";
+	String height = "";
+	String bmi = "";
+	String bmr = "";
+	String remain_days = "";
+	String current_weight = "";
+	String target_weight = "";
+	
 	//생성자 메소드
 	public CustomerLoginDisplay() { 
 		frame = new JFrame(); //frame 생성
@@ -87,6 +99,17 @@ public class CustomerLoginDisplay extends JFrame implements MouseListener,Action
 					pwField.setText("");
 					frame.setVisible(false);
 					new CustomerDisplay();
+					CustomerDisplay.nameLabel.setText(name);
+                	CustomerDisplay.idLabel.setText(id);
+                	CustomerDisplay.addressLabel.setText(address);
+                	CustomerDisplay.phoneLabel.setText(phone);
+                	CustomerDisplay.ageLabel.setText(age);
+                	CustomerDisplay.currentWeightLabel.setText(current_weight);
+                	CustomerDisplay.targetWeightLabel.setText(target_weight);
+                	CustomerDisplay.heightLabel.setText(height);
+                	CustomerDisplay.remainDaysLabel.setText(remain_days);
+                	CustomerDisplay.bmiLabel.setText(bmi);
+                	CustomerDisplay.bmrLabel.setText(bmr);
 				}else {
 					idField.setText("");
 					pwField.setText("");
@@ -125,16 +148,30 @@ public class CustomerLoginDisplay extends JFrame implements MouseListener,Action
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/daily_health?serverTimezone=UTC", "root", "password");
             
-            query = "SELECT id, pwd, name, homeAddress, phone, age, CurrentWeight, TargetWeight, height, period, remain_days FROM jiyoon";
+            query = "SELECT id, pwd, name, homeAddress, phone, age, CurrentWeight, TargetWeight, height, period, remain_days, bmi, bmr FROM jiyoon";
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();
              
 			boolean result = true;
 			
+//			CustomerDisplay c = new CustomerDisplay();
+			
             while (result = rset.next()) {
                 if(rset.getString("id").equals(idField.getText()) && rset.getString("pwd").equals(pwField.getText())){
                 	JOptionPane.showMessageDialog(null, "로그인에 성공하였습니다.", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-                	                	
+                	
+                	name = rset.getString("name");
+                	id = rset.getString("id");
+                	address = rset.getString("homeAddress");
+                	phone = rset.getString("phone");
+                	age = rset.getString("age");
+                	current_weight = rset.getString("CurrentWeight");
+                	target_weight = rset.getString("TargetWeight");
+                	height = rset.getString("height");
+                	remain_days = rset.getString("remain_days");
+                	bmi = rset.getString("bmi");
+                	bmr = rset.getString("bmr");
+                	
                 	return true;
                 }
             }
