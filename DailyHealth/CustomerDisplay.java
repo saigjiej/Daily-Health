@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.*;
 
 public class CustomerDisplay extends JFrame{
@@ -36,17 +35,17 @@ public class CustomerDisplay extends JFrame{
 	public static JLabel targetWeightLabel;
 	
 	public CustomerDisplay() {
-		frame = new JFrame(); //frame »ı¼º
-		frame.setResizable(false); //frameÀÌ º¸ÀÌµµ·Ï ¼³Á¤
-		frame.setBounds(470, 200, 1000, 600); //frameÀÇ Å©±â ¼³Á¤
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ã¢À» ´İµµ·Ï ÁöÁ¤
+		frame = new JFrame(); //frame ìƒì„±
+		frame.setResizable(false); //frameì´ ë³´ì´ë„ë¡ ì„¤ì •
+		frame.setBounds(470, 200, 1000, 600); //frameì˜ í¬ê¸° ì„¤ì •
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ì°½ì„ ë‹«ë„ë¡ ì§€ì •
 		frame.getContentPane().setLayout(null);
-		frame.setVisible(true); //Ã¢À» È­¸é¿¡ ³ªÅ¸³¾ °ÍÀÎÁö ¼³Á¤
-		frame.setTitle("Daily Health - È¸¿ø ÆäÀÌÁö"); //Å¸ÀÌÆ² ¼³Á¤
+		frame.setVisible(true); //ì°½ì„ í™”ë©´ì— ë‚˜íƒ€ë‚¼ ê²ƒì¸ì§€ ì„¤ì •
+		frame.setTitle("Daily Health - íšŒì› í˜ì´ì§€"); //íƒ€ì´í‹€ ì„¤ì •
 		
-		//ÅøÅ¶À» »ç¿ëÇÏ¿© ÀÌ¹ÌÁö ¸¸µé±â
+		//íˆ´í‚·ì„ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ë§Œë“¤ê¸°
 		Toolkit toolkit = frame.getToolkit();
-		//jpg, gif, png Çü½ÄÀÇ ÀÌ¹ÌÁö ÆÄÀÏ¸¸ Áö¿ø
+		//jpg, gif, png í˜•ì‹ì˜ ì´ë¯¸ì§€ íŒŒì¼ë§Œ ì§€ì›
 		Image image = toolkit.createImage("./image/gym.png");
 		Image img = Toolkit.getDefaultToolkit().getImage("./image/icon.png");
 		frame.setIconImage(img); 
@@ -56,84 +55,84 @@ public class CustomerDisplay extends JFrame{
 		frame.getContentPane().add(customerPanel);
 		customerPanel.setLayout(null);
 		
-		// ÀÌ¸§ label
-		nameLabel = new JLabel("ÀÓ½ÃÀÌ¸§", JLabel.CENTER);
+    // ì´ë¦„ label
+		nameLabel = new JLabel("ì„ì‹œì´ë¦„", JLabel.CENTER);
 		customerPanel.add(nameLabel);
 		nameLabel.setBounds(60, 35, 200, 70);
-		nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 36));
-		nameLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		nameLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 36));
+		nameLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		nameLabel.setBackground(Color.pink);
 		
-		// ¾ÆÀÌµğ label
-		idLabel = new JLabel("ÀÓ½Ã¾ÆÀÌµğ", JLabel.CENTER);
+		// ì•„ì´ë”” label
+		idLabel = new JLabel("ì„ì‹œì•„ì´ë””", JLabel.CENTER);
 		customerPanel.add(idLabel);
 		idLabel.setBounds(60, 115, 200, 40);
-		idLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		idLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		idLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		idLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		idLabel.setBackground(Color.pink);
 		
-		// ÁÖ¼Ò  label
-		addressLabel = new JLabel("ÀÓ½ÃÁÖ¼ÒÀÔ´Ï´ç´ç´ç´ç", JLabel.CENTER);
+		// ì£¼ì†Œ  label
+		addressLabel = new JLabel("ì„ì‹œì£¼ì†Œì…ë‹ˆë‹¹ë‹¹ë‹¹ë‹¹", JLabel.CENTER);
 		customerPanel.add(addressLabel);
 		addressLabel.setBounds(60, 205, 250, 40);
-		addressLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		addressLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		addressLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		addressLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		addressLabel.setBackground(Color.pink);
 		
-		// ÀüÈ­¹øÈ£ label
+		// ì „í™”ë²ˆí˜¸ label
 		phoneLabel = new JLabel("01051354735", JLabel.CENTER);
 		customerPanel.add(phoneLabel);
 		phoneLabel.setBounds(60, 255, 250, 40);
-		phoneLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		phoneLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		phoneLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		phoneLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		phoneLabel.setBackground(Color.pink);
 		
-		// ³ªÀÌ  label
-		ageLabel = new JLabel("18¼¼", JLabel.CENTER);
+		// ë‚˜ì´  label
+		ageLabel = new JLabel("18ì„¸", JLabel.CENTER);
 		customerPanel.add(ageLabel);
 		ageLabel.setBounds(60, 305, 120, 40);
-		ageLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		ageLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		ageLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		ageLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		ageLabel.setBackground(Color.pink);
 		
-		// Å° label
+		// í‚¤ label
 		heightLabel = new JLabel("height", JLabel.CENTER);
 		customerPanel.add(heightLabel);
 		heightLabel.setBounds(60, 385, 120, 40);
-		heightLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		heightLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		heightLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		heightLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		heightLabel.setBackground(Color.pink);
 		
 		// bmi label
 		bmiLabel = new JLabel("bmi", JLabel.CENTER);
 		customerPanel.add(bmiLabel);
 		bmiLabel.setBounds(60, 435, 120, 40);
-		bmiLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		bmiLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+    bmiLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		bmiLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		bmiLabel.setBackground(Color.pink);
 		
 		// bmr label
 		bmrLabel = new JLabel("bmr", JLabel.CENTER);
 		customerPanel.add(bmrLabel);
 		bmrLabel.setBounds(60, 485, 120, 40);
-		bmrLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 24));
-		bmrLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+    bmrLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 24));
+		bmrLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		bmrLabel.setBackground(Color.pink);
 		
-		// ³²Àº ÀÏÀÚ  label
-		remainDaysLabel = new JLabel("90ÀÏ", JLabel.CENTER);
+		// ë‚¨ì€ ì¼ì  label
+		remainDaysLabel = new JLabel("90ì¼", JLabel.CENTER);
 		customerPanel.add(remainDaysLabel);
 		remainDaysLabel.setBounds(480, 50, 160, 100);
-		remainDaysLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 52));
-		remainDaysLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		remainDaysLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 52));
+		remainDaysLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		remainDaysLabel.setBackground(Color.pink);
 		
-		// Ãâ¼® Button
-		attendBtn = new JButton("»ç¿ë");
+		// ì¶œì„ Button
+		attendBtn = new JButton("ì‚¬ìš©");
 		customerPanel.add(attendBtn);
 		attendBtn.setBounds(655, 70, 70, 60);
-		attendBtn.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 18));
-		attendBtn.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		attendBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 18));
+		attendBtn.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		attendBtn.setBackground(Color.pink);
 		attendBtn.setBorderPainted(false);
 		attendBtn.setFocusPainted(false);
@@ -141,54 +140,55 @@ public class CustomerDisplay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(Integer.parseInt(remainDaysLabel.getText()) > 0 && attend(idLabel.getText()) == true) {
-					SimpleDateFormat custom_format = new SimpleDateFormat ( "yyyy³â MM¿ù ddÀÏ");
+          SimpleDateFormat custom_format = new SimpleDateFormat ( "yyyyë…„ MMì›” ddì¼");
 					Date time = new Date();
 					String today = custom_format.format(time);
-					JOptionPane.showMessageDialog(null, idLabel.getText() + "´Ô, " + today + "¿¡ Á¤±â±ÇÀÌ »ç¿ëµÇ¾ú½À´Ï´Ù", "Ãâ¼®Ã¼Å©", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, idLabel.getText() + "ë‹˜, " + today + "ì— ì •ê¸°ê¶Œì´ ì‚¬ìš©ë˜ì—ˆìŠµë‹ˆë‹¤", "ì¶œì„ì²´í¬", JOptionPane.PLAIN_MESSAGE);
 					remainDaysLabel.setText(String.valueOf(Integer.parseInt(remainDaysLabel.getText()) -1));
 				}else if(Integer.parseInt(remainDaysLabel.getText()) <= 0) {
-					JOptionPane.showMessageDialog(null, "<html>" + idLabel.getText() + "´Ô, ³²Àº ÀÌ¿ëÀÏÀÌ ¾ø½À´Ï´Ù<br>°è¼Ó ÀÌ¿ëÀ» ¿øÇÏ½Ã¸é Ãß°¡ °áÁ¦¸¦ ÇØÁÖ¼¼¿ä</html>", "Ãâ¼®Ã¼Å©", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "<html>" + idLabel.getText() + "ë‹˜, ë‚¨ì€ ì´ìš©ì¼ì´ ì—†ìŠµë‹ˆë‹¤<br>ê³„ì† ì´ìš©ì„ ì›í•˜ì‹œë©´ ì¶”ê°€ ê²°ì œë¥¼ í•´ì£¼ì„¸ìš”</html>", "ì¶œì„ì²´í¬", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		});
 		
-		// Ãâ¼®Ã¼Å© ¼³¸í
-		info = new JLabel("Ãâ¼®Ã¼Å©", JLabel.LEFT);
+    // ì¶œì„ì²´í¬ ì„¤ëª…
+		info = new JLabel("ì¶œì„ì²´í¬", JLabel.LEFT);
 		customerPanel.add(info);
 		info.setBounds(745, 50, 270, 100);
-		info.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		info.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		info.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
+		info.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		info.setForeground(new Color(136,150,159));
-		info.setText("<html>»ç¿ë ¹öÆ°À» ´©¸£¸é ³²Àº ÀÏ¼ö°¡ Â÷°¨µË´Ï´Ù<br>»ç¿ë ¹öÆ°À» ´©¸£¸é ÃâÀÔ¹®ÀÌ ¿­¸³´Ï´Ù<br>Ãß°¡ °áÁ¦ => Ä«¿îÅÍ·Î ¹®ÀÇ</html>");
+		info.setText("<html>ì‚¬ìš© ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë‚¨ì€ ì¼ìˆ˜ê°€ ì°¨ê°ë©ë‹ˆë‹¤<br>ì‚¬ìš© ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ì¶œì…ë¬¸ì´ ì—´ë¦½ë‹ˆë‹¤<br>ì¶”ê°€ ê²°ì œ => ì¹´ìš´í„°ë¡œ ë¬¸ì˜</html>");
 		
-		// ÇöÀç ¸ö¹«°Ô label
+		// í˜„ì¬ ëª¸ë¬´ê²Œ label
 		currentWeightLabel = new JLabel("Current", JLabel.CENTER);
 		customerPanel.add(currentWeightLabel);
 		currentWeightLabel.setBounds(480, 190, 150, 70);
-		currentWeightLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 36));
-		currentWeightLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		currentWeightLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 36));
+		currentWeightLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		currentWeightLabel.setBackground(Color.pink);
 		
-		// ÇöÀç ¸ö¹«°Ô º¯°æ Button
-		JButton changeCurrentWeightBtn = new JButton("ÇöÀç ¸ö¹«°Ô º¯°æ");
+		// í˜„ì¬ ëª¸ë¬´ê²Œ ë³€ê²½ Button
+		JButton changeCurrentWeightBtn = new JButton("í˜„ì¬ ëª¸ë¬´ê²Œ ë³€ê²½");
 		customerPanel.add(changeCurrentWeightBtn);
 		changeCurrentWeightBtn.setBounds(480, 260, 150, 30);
 		changeCurrentWeightBtn.setBackground(Color.green);
-		changeCurrentWeightBtn.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		changeCurrentWeightBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 14));
 		changeCurrentWeightBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String newCurrentWeightStr = JOptionPane.showInputDialog(null, "ÇöÀç ¸ö¹«°Ô¸¦ »õ·Î ÀÔ·ÂÇØÁÖ¼¼¿ä", "ÇöÀç ¸ö¹«°Ô º¯°æ", JOptionPane.QUESTION_MESSAGE);
+				String newCurrentWeightStr = JOptionPane.showInputDialog(null, "í˜„ì¬ ëª¸ë¬´ê²Œë¥¼ ìƒˆë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”", "í˜„ì¬ ëª¸ë¬´ê²Œ ë³€ê²½", JOptionPane.QUESTION_MESSAGE);
 				if(Current(newCurrentWeightStr) && newCurrentWeightStr != null) {
-					JOptionPane.showMessageDialog(null, "ÇöÀç ¸ö¹«°Ô°¡ º¯°æµÇ¾ú½À´Ï´Ù", "ÇöÀç ¸ö¹«°Ô º¯°æ", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "í˜„ì¬ ëª¸ë¬´ê²Œê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤", "í˜„ì¬ ëª¸ë¬´ê²Œ ë³€ê²½", JOptionPane.PLAIN_MESSAGE);
 					currentWeightLabel.setText(newCurrentWeightStr);
 				}else if(Current(newCurrentWeightStr) == false){
-					JOptionPane.showMessageDialog(null, "ÇöÀç ¸ö¹«°Ô¸¦ º¯°æÇÏÁö ¸øÇß½À´Ï´Ù", "ÇöÀç ¸ö¹«°Ô º¯°æ", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "í˜„ì¬ ëª¸ë¬´ê²Œë¥¼ ë³€ê²½í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤", "í˜„ì¬ ëª¸ë¬´ê²Œ ë³€ê²½", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 		
-		// È­»ìÇ¥ ¹öÆ°
+
+		// í™”ì‚´í‘œ ë²„íŠ¼
 		JButton arrow = new JButton("");
 		arrow.setBounds(650, 215, 50, 50);
 		customerPanel.add(arrow);
@@ -197,39 +197,40 @@ public class CustomerDisplay extends JFrame{
 		arrow.setContentAreaFilled(false);
 		arrow.setFocusPainted(false);
 		
-		// ¸ñÇ¥ ¸ö¹«°Ô  label
+		// ëª©í‘œ ëª¸ë¬´ê²Œ  label
 		targetWeightLabel = new JLabel("Target", JLabel.CENTER);
 		customerPanel.add(targetWeightLabel);
 		targetWeightLabel.setBounds(720, 190, 150, 70);
-		targetWeightLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 36));
-		targetWeightLabel.setOpaque(true); //Opaque°ªÀ» true·Î ¹Ì¸® ¼³Á¤ÇØ ÁÖ¾î¾ß ¹è°æ»öÀÌ Àû¿ëµÈ´Ù.
+		targetWeightLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 36));
+		targetWeightLabel.setOpaque(true); //Opaqueê°’ì„ trueë¡œ ë¯¸ë¦¬ ì„¤ì •í•´ ì£¼ì–´ì•¼ ë°°ê²½ìƒ‰ì´ ì ìš©ëœë‹¤.
 		targetWeightLabel.setBackground(Color.pink);
 		
-		// ¸ñÇ¥ ¸ö¹«°Ô º¯°æ Button
-		JButton changeTargetWeightBtn = new JButton("¸ñÇ¥ ¸ö¹«°Ô º¯°æ");
+		// ëª©í‘œ ëª¸ë¬´ê²Œ ë³€ê²½ Button
+		JButton changeTargetWeightBtn = new JButton("ëª©í‘œ ëª¸ë¬´ê²Œ ë³€ê²½");
 		customerPanel.add(changeTargetWeightBtn);
 		changeTargetWeightBtn.setBounds(720, 260, 150, 30);
 		changeTargetWeightBtn.setBackground(Color.green);
-		changeTargetWeightBtn.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 14));
+		changeTargetWeightBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 14));
 		changeTargetWeightBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String newTargetWeightStr = JOptionPane.showInputDialog(null, "¸ñÇ¥ ¸ö¹«°Ô¸¦ »õ·Î ÀÔ·ÂÇØÁÖ¼¼¿ä", "¸ñÇ¥ ¸ö¹«°Ô º¯°æ", JOptionPane.QUESTION_MESSAGE);
+				String newTargetWeightStr = JOptionPane.showInputDialog(null, "ëª©í‘œ ëª¸ë¬´ê²Œë¥¼ ìƒˆë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”", "ëª©í‘œ ëª¸ë¬´ê²Œ ë³€ê²½", JOptionPane.QUESTION_MESSAGE);
 				if(Target(newTargetWeightStr) && newTargetWeightStr != null) {
-					JOptionPane.showMessageDialog(null, "¸ñÇ¥ ¸ö¹«°Ô°¡ º¯°æµÇ¾ú½À´Ï´Ù", "¸ñÇ¥ ¸ö¹«°Ô º¯°æ", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ëª©í‘œ ëª¸ë¬´ê²Œê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤", "ëª©í‘œ ëª¸ë¬´ê²Œ ë³€ê²½", JOptionPane.PLAIN_MESSAGE);
 					targetWeightLabel.setText(newTargetWeightStr);
 				}else if(Current(newTargetWeightStr) == false){
-					JOptionPane.showMessageDialog(null, "¸ñÇ¥ ¸ö¹«°Ô¸¦ º¯°æÇÏÁö ¸øÇß½À´Ï´Ù", "¸ñÇ¥ ¸ö¹«°Ô º¯°æ", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ëª©í‘œ ëª¸ë¬´ê²Œë¥¼ ë³€ê²½í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤", "ëª©í‘œ ëª¸ë¬´ê²Œ ë³€ê²½", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 		
-		// bmi °è»ê ¹öÆ°
-		JButton bmiBtn = new JButton("bmi Áö¼ö °è»ê");
+
+		// bmi ê³„ì‚° ë²„íŠ¼
+		JButton bmiBtn = new JButton("bmi ì§€ìˆ˜ ê³„ì‚°");
 		bmiBtn.setBounds(480, 385, 250, 50);
 		customerPanel.add(bmiBtn);
 		bmiBtn.setBackground(Color.green);
-		bmiBtn.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 22));
+		bmiBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 22));
 		bmiBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -241,13 +242,13 @@ public class CustomerDisplay extends JFrame{
 //		arrow.setContentAreaFilled(false);
 //		arrow.setFocusPainted(false);
 		
-		// bmr °è»ê ¹öÆ°
-		JButton bmrBtn = new JButton("±âÃÊ´ë»ç·®(bmr) °è»ê");
-		bmrBtn.setBounds(480, 455, 250, 50);
-		customerPanel.add(bmrBtn);
-		bmrBtn.setBackground(Color.green);
-		bmrBtn.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 22));
-		bmrBtn.addActionListener(new ActionListener() {
+      // bmr ê³„ì‚° ë²„íŠ¼
+      JButton bmrBtn = new JButton("ê¸°ì´ˆëŒ€ì‚¬ëŸ‰(bmr) ê³„ì‚°");
+      bmrBtn.setBounds(480, 455, 250, 50);
+      customerPanel.add(bmrBtn);
+      bmrBtn.setBackground(Color.green);
+      bmrBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 22));
+      bmrBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				BmrFrame bmr = new BmrFrame();
@@ -258,12 +259,12 @@ public class CustomerDisplay extends JFrame{
 //		arrow.setContentAreaFilled(false);
 //		arrow.setFocusPainted(false);
 		
-		// ·Î±×¾Æ¿ô ¹öÆ°
-		JButton logoutBtn = new JButton("·Î±×¾Æ¿ô");
+    // ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼
+		JButton logoutBtn = new JButton("ë¡œê·¸ì•„ì›ƒ");
 		logoutBtn.setBounds(870, 510, 105, 35);
 		customerPanel.add(logoutBtn);
 		logoutBtn.setBackground(Color.green);
-		logoutBtn.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
+		logoutBtn.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17));
 		logoutBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -276,7 +277,8 @@ public class CustomerDisplay extends JFrame{
 		new CustomerDisplay();
 	}
 	
-	// Ãâ¼®Ã¼Å© ¸Ş¼­µå
+
+	// ì¶œì„ì²´í¬ ë©”ì„œë“œ
 	public boolean attend(String id) {
 		String query;
 		PreparedStatement pstmt = null;
@@ -294,7 +296,7 @@ public class CustomerDisplay extends JFrame{
 
             int numRows = pst.executeUpdate();
 
-            System.out.format("Ãâ¼®Ã¼Å© : %d°³ÀÇ ÇàÀÌ ¹Ù²¼½À´Ï´Ù.", numRows);
+            System.out.format("ì¶œì„ì²´í¬ : %dê°œì˜ í–‰ì´ ë°”ê¼ˆìŠµë‹ˆë‹¤.", numRows);
 
             pst.close();
             conn.close();
@@ -309,7 +311,8 @@ public class CustomerDisplay extends JFrame{
         }
 	}
 	
-	// ÇöÀç ¸ö¹«°Ô º¯°æ ¸Ş¼­µå
+
+	// í˜„ì¬ ëª¸ë¬´ê²Œ ë³€ê²½ ë©”ì„œë“œ
 	public boolean Current(String cw) {		
 		String query;
 		PreparedStatement pstmt = null;
@@ -326,8 +329,7 @@ public class CustomerDisplay extends JFrame{
             pst.setString(2, idLabel.getText());
 
             int numRows = pst.executeUpdate(); //insert, delete, 
-
-            System.out.format("%d°³ÀÇ ÇàÀÌ ¹Ù²¼½À´Ï´Ù.", numRows);
+            System.out.format("%dê°œì˜ í–‰ì´ ë°”ê¼ˆìŠµë‹ˆë‹¤.", numRows);
 
             pst.close();
             conn.close();
@@ -341,8 +343,8 @@ public class CustomerDisplay extends JFrame{
             return false;
         }
 	}
-	
-	// ¸ñÇ¥ ¸ö¹«°Ô º¯°æ ¸Ş¼­µå
+  
+	// ëª©í‘œ ëª¸ë¬´ê²Œ ë³€ê²½ ë©”ì„œë“œ
 	public boolean Target(String tg) {		
 		String query;
 		PreparedStatement pstmt = null;
@@ -360,7 +362,7 @@ public class CustomerDisplay extends JFrame{
 	
 	        int numRows = pst.executeUpdate(); //insert, delete, 
 	
-	        System.out.format("%d°³ÀÇ ÇàÀÌ ¹Ù²¼½À´Ï´Ù.", numRows);
+	        System.out.format("%dê°œì˜ í–‰ì´ ë°”ê¼ˆìŠµë‹ˆë‹¤.", numRows);
 	
 	        pst.close();
 	        conn.close();
@@ -387,17 +389,17 @@ class BmiFrame extends JFrame{
 	double bmi;
 	
 	BmiFrame() {
-		frame = new JFrame(); //frame »ı¼º
-		frame.setResizable(false); //frameÀÌ º¸ÀÌµµ·Ï ¼³Á¤
-		frame.setBounds(470, 200, 1000, 600); //frameÀÇ Å©±â ¼³Á¤
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ã¢À» ´İµµ·Ï ÁöÁ¤
+		frame = new JFrame(); //frame ìƒì„±
+		frame.setResizable(false); //frameì´ ë³´ì´ë„ë¡ ì„¤ì •
+		frame.setBounds(470, 200, 1000, 600); //frameì˜ í¬ê¸° ì„¤ì •
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ì°½ì„ ë‹«ë„ë¡ ì§€ì •
 		frame.getContentPane().setLayout(null);
-		frame.setVisible(true); //Ã¢À» È­¸é¿¡ ³ªÅ¸³¾ °ÍÀÎÁö ¼³Á¤
-		frame.setTitle("Daily Health - bmi °è»ê"); //Å¸ÀÌÆ² ¼³Á¤
+		frame.setVisible(true); //ì°½ì„ í™”ë©´ì— ë‚˜íƒ€ë‚¼ ê²ƒì¸ì§€ ì„¤ì •
+		frame.setTitle("Daily Health - bmi ê³„ì‚°"); //íƒ€ì´í‹€ ì„¤ì •
 		
-		//ÅøÅ¶À» »ç¿ëÇÏ¿© ÀÌ¹ÌÁö ¸¸µé±â
+		//íˆ´í‚·ì„ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ë§Œë“¤ê¸°
 		Toolkit toolkit = frame.getToolkit();
-		//jpg, gif, png Çü½ÄÀÇ ÀÌ¹ÌÁö ÆÄÀÏ¸¸ Áö¿ø
+		//jpg, gif, png í˜•ì‹ì˜ ì´ë¯¸ì§€ íŒŒì¼ë§Œ ì§€ì›  
 		Image image = toolkit.createImage("./image/gym.png");
 		Image img = Toolkit.getDefaultToolkit().getImage("./image/icon.png");
 		frame.setIconImage(img); 
@@ -409,7 +411,7 @@ class BmiFrame extends JFrame{
 
 		JLabel WeightLabel = new JLabel("\uBAB8\uBB34\uAC8C : ");
 		WeightLabel.setBounds(48, 109, 113, 34);
-		WeightLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+		WeightLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 25));
 		
 		bmiPanel.add(WeightLabel);
 		
@@ -417,35 +419,37 @@ class BmiFrame extends JFrame{
 		WeightField.setBounds(162, 109, 172, 35);
 		bmiPanel.add(WeightField);
 		WeightField.setColumns(10);
-		WeightField.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 22));
+		WeightField.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 22));
 		WeightField.setText(CustomerDisplay.currentWeightLabel.getText());
 		
 		JLabel lblkg = new JLabel("(kg\uB2E8\uC704)");
 		lblkg.setBounds(337, 109, 104, 34);
-		lblkg.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+		lblkg.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 25));
 		bmiPanel.add(lblkg);
 		
 		JLabel HeightLabel = new JLabel("\uD0A4 : ");
 		HeightLabel.setBounds(48, 158, 113, 34);
-		HeightLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+		HeightLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 25));
+
 		bmiPanel.add(HeightLabel);
 		
 		HeightField = new JTextField();
 		HeightField.setBounds(162, 158, 172, 35);
 		HeightField.setColumns(10);
-		HeightField.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 22));
+		HeightField.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 22));
+
 		HeightField.setText(CustomerDisplay.heightLabel.getText());
 		bmiPanel.add(HeightField);
 		
 		JLabel lblcm = new JLabel("(cm\uB2E8\uC704)");
 		lblcm.setBounds(337, 158, 104, 34);
-		lblcm.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+		lblcm.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 25));
 		bmiPanel.add(lblcm);
 		
 		BmiUpdate = new JButton();
 		
 		JButton BmiButton = new JButton("BMI \uC9C0\uC218 \uACC4\uC0B0");
-		BmiButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		BmiButton.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 		BmiButton.setBackground(new Color(151, 201, 210));
 		BmiButton.setBounds(468, 112, 180, 85);
 		BmiButton.setBorderPainted(false);
@@ -458,20 +462,22 @@ class BmiFrame extends JFrame{
 					if(BmiResult != null) {
 						BmiResult.setVisible(false);
 					}
-					double weight = Double.parseDouble(WeightField.getText()); //ÀÔ·Â¹ŞÀº ¸ö¹«°Ô¸¦ º¯¼ö weight¿¡ ³Ö¾îÁØ´Ù
-					double height = Double.parseDouble(HeightField.getText()); //ÀÔ·Â¹ŞÀº Å°¸¦ º¯¼ö height¿¡ ³Ö¾îÁØ´Ù
-					double var = weight/((height*(0.01))*(height*(0.01))); //BmiÁö¼ö¸¦ ±¸ÇÏ´Â °ø½ÄÀÌ´Ù
-					if(0<var && var<18.5) { //Á¶°Ç¼º¸³½Ã
-						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ÀúÃ¼ÁßÀÔ´Ï´Ù"); //·¹ÀÌºíÀ» ÀÌ¿ëÇØ Ãâ·Â
+
+					double weight = Double.parseDouble(WeightField.getText()); //ì…ë ¥ë°›ì€ ëª¸ë¬´ê²Œë¥¼ ë³€ìˆ˜ weightì— ë„£ì–´ì¤€ë‹¤
+					double height = Double.parseDouble(HeightField.getText()); //ì…ë ¥ë°›ì€ í‚¤ë¥¼ ë³€ìˆ˜ heightì— ë„£ì–´ì¤€ë‹¤
+					double var = weight/((height*(0.01))*(height*(0.01))); //Bmiì§€ìˆ˜ë¥¼ êµ¬í•˜ëŠ” ê³µì‹ì´ë‹¤
+					if(0<var && var<18.5) { //ì¡°ê±´ì„±ë¦½ì‹œ
+						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ì €ì²´ì¤‘ì…ë‹ˆë‹¤"); //ë ˆì´ë¸”ì„ ì´ìš©í•´ ì¶œë ¥
 						bmiPanel.add(BmiResult);
-						BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+						BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);
 						BmiResult.setForeground(Color.BLACK);
 						
-						BmiUpdate = new JButton("BMI µî·ÏÇÏ±â");
+						BmiUpdate = new JButton("BMI ë“±ë¡í•˜ê¸°");
 						bmiPanel.add(BmiUpdate);
-						BmiUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmiUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
+
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -484,29 +490,30 @@ class BmiFrame extends JFrame{
 						BmiUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmi) + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmi) + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmiLabel.setText(String.valueOf(bmi));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
 									
 								}
 							}
 						});
-					}else if(18.5<=var && var<23) {//Á¶°Ç¼º¸³½Ã
-						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , Á¤»óÃ¼ÁßÀÔ´Ï´Ù");//·¹ÀÌºíÀ» ÀÌ¿ëÇØ Ãâ·Â
+					}else if(18.5<=var && var<23) {//ì¡°ê±´ì„±ë¦½ì‹œ
+						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ì •ìƒì²´ì¤‘ì…ë‹ˆë‹¤");//ë ˆì´ë¸”ì„ ì´ìš©í•´ ì¶œë ¥
 						bmiPanel.add(BmiResult);
-						BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+						BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
+
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
 						
-						BmiUpdate = new JButton("BMI µî·ÏÇÏ±â");
+						BmiUpdate = new JButton("BMI ë“±ë¡í•˜ê¸°");
 						bmiPanel.add(BmiUpdate);
-						BmiUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmiUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -519,29 +526,30 @@ class BmiFrame extends JFrame{
 						BmiUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmi) + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmi) + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmiLabel.setText(String.valueOf(bmi));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
 									
 								}
 							}
 						});
-					}else if(23<=var && var<25) {//Á¶°Ç¼º¸³½Ã
-						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , °úÃ¼ÁßÀÔ´Ï´Ù");//·¹ÀÌºíÀ» ÀÌ¿ëÇØ Ãâ·Â
+					}else if(23<=var && var<25) {//ì¡°ê±´ì„±ë¦½ì‹œ
+						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ê³¼ì²´ì¤‘ì…ë‹ˆë‹¤");//ë ˆì´ë¸”ì„ ì´ìš©í•´ ì¶œë ¥
 						bmiPanel.add(BmiResult);
-						BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+						BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
 						
-						BmiUpdate = new JButton("BMI µî·ÏÇÏ±â");
+						BmiUpdate = new JButton("BMI ë“±ë¡í•˜ê¸°");
 						bmiPanel.add(BmiUpdate);
-						BmiUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmiUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
+
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -554,29 +562,28 @@ class BmiFrame extends JFrame{
 						BmiUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmi) + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmi) + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmiLabel.setText(String.valueOf(bmi));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
 									
 								}
 							}
 						});
-					}else if(25<=var && var<30) { //Á¶°Ç¼º¸³½Ã
-						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , °æµµºñ¸¸ÀÔ´Ï´Ù");//·¹ÀÌºíÀ» ÀÌ¿ëÇØ Ãâ·Â
+					}else if(25<=var && var<30) { //ì¡°ê±´ì„±ë¦½ì‹œ
+						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ê²½ë„ë¹„ë§Œì…ë‹ˆë‹¤");//ë ˆì´ë¸”ì„ ì´ìš©í•´ ì¶œë ¥
 						bmiPanel.add(BmiResult);
-						BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+						BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
-						
-						BmiUpdate = new JButton("BMI µî·ÏÇÏ±â");
+						BmiUpdate = new JButton("BMI ë“±ë¡í•˜ê¸°");
 						bmiPanel.add(BmiUpdate);
-						BmiUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmiUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -589,29 +596,29 @@ class BmiFrame extends JFrame{
 						BmiUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmi) + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmi) + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmiLabel.setText(String.valueOf(bmi));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
 									
 								}
 							}
 						});
-					}else if(var<=30 && var<40) {//Á¶°Ç¼º¸³½Ã
-						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , °íµµºñ¸¸ÀÔ´Ï´Ù");//·¹ÀÌºíÀ» ÀÌ¿ëÇØ Ãâ·Â
+					}else if(var<=30 && var<40) {//ì¡°ê±´ì„±ë¦½ì‹œ
+						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ê³ ë„ë¹„ë§Œì…ë‹ˆë‹¤");//ë ˆì´ë¸”ì„ ì´ìš©í•´ ì¶œë ¥
 						bmiPanel.add(BmiResult);
-						BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+						BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);		
 						BmiResult.setForeground(Color.BLACK);
-						
-						BmiUpdate = new JButton("BMI µî·ÏÇÏ±â");
+
+						BmiUpdate = new JButton("BMI ë“±ë¡í•˜ê¸°");
 						bmiPanel.add(BmiUpdate);
-						BmiUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmiUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -624,29 +631,29 @@ class BmiFrame extends JFrame{
 						BmiUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmi) + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmi) + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmiLabel.setText(String.valueOf(bmi));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
 									
 								}
 							}
 						});
-					}else {//Á¶°Çµé ¿Ü ÀÏ ½Ã¿¡
-						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ÃÊ°íµµºñ¸¸ÀÔ´Ï´Ù");
+					}else {//ì¡°ê±´ë“¤ ì™¸ ì¼ ì‹œì—
+						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , ì´ˆê³ ë„ë¹„ë§Œì…ë‹ˆë‹¤");
 						bmiPanel.add(BmiResult);
-						BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+						BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
-						
-						BmiUpdate = new JButton("BMI µî·ÏÇÏ±â");
+
+						BmiUpdate = new JButton("BMI ë“±ë¡í•˜ê¸°");
 						bmiPanel.add(BmiUpdate);
-						BmiUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmiUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -659,25 +666,25 @@ class BmiFrame extends JFrame{
 						BmiUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmi) + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmi) + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmiLabel.setText(String.valueOf(bmi));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
-									JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}
 							}
 						});
-					}//end of if~else if~else¹®
-				// bmi db¿¡ Ãß°¡ÇÏ´Â ÄÚµå
+					}//end of if~else if~elseë¬¸
+				// bmi dbì— ì¶”ê°€í•˜ëŠ” ì½”ë“œ
 				}catch(NumberFormatException num) {
-					BmiResult = new JLabel("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+					BmiResult = new JLabel("ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 					BmiResult.setForeground(Color.RED);
 					bmiPanel.add(BmiResult);
-					BmiResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 27));
+					BmiResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 27));
 					BmiResult.setBounds(48, 261, 874, 43);
 					BmiResult.setVisible(true);	
 				}
@@ -687,51 +694,50 @@ class BmiFrame extends JFrame{
 		BmiUpdate.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel + "´Ô, " + BmiResult.getText() + "¸¦ bmi Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmi µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+				int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel + "ë‹˜, " + BmiResult.getText() + "ë¥¼ bmi ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 				if(option == JOptionPane.YES_OPTION && updateBmi(bmi) == true) {
-					JOptionPane.showMessageDialog(null, "bmi Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 					CustomerDisplay.bmiLabel.setText(BmiResult.getText());
 				}else if(option == JOptionPane.NO_OPTION) {
-					JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 				}else {
-					JOptionPane.showMessageDialog(null, "bmi Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmi µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "bmi ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmi ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		});
 		
-		// bmi¿¡ µû¸¥ ºñ¸¸µµ ÀÌ¹ÌÁö
+		// bmiì— ë”°ë¥¸ ë¹„ë§Œë„ ì´ë¯¸ì§€
 		JButton bmiImage = new JButton("");
 		bmiImage.setBounds(139, 378, 742, 110);
-		bmiImage.setIcon(new ImageIcon("./image/bmi.png")); //bmiÁö¼ö¿¡ µû¸¥ ºñ¸¸µµ¸¦ º¸¿©ÁÖ´Â »çÁø
+		bmiImage.setIcon(new ImageIcon("./image/bmi.png")); //bmiì§€ìˆ˜ì— ë”°ë¥¸ ë¹„ë§Œë„ë¥¼ ë³´ì—¬ì£¼ëŠ” ì‚¬ì§„
 		bmiPanel.add(bmiImage);
 		bmiImage.setBorderPainted(false);
 		bmiImage.setFocusPainted(false);
-		
-		// ¸ŞÀÎÀ¸·Î È­¸é
+
+		// ë©”ì¸ìœ¼ë¡œ í™”ë©´
 		JButton gotoMain_bmi = new JButton("\uB4A4\uB85C\uAC00\uAE30");
-		gotoMain_bmi.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		gotoMain_bmi.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		gotoMain_bmi.setBackground(new Color(218, 226, 234));
 		gotoMain_bmi.setBounds(863, 12, 105, 27);
 //		bmiPanel.add(gotoMain_bmi);
-		
-		JLabel lblBmi = new JLabel("BMI Áö¼ö ±¸ÇÏ±â");
-		lblBmi.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
+		JLabel lblBmi = new JLabel("BMI ì§€ìˆ˜ êµ¬í•˜ê¸°");
+		lblBmi.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 30));
 		lblBmi.setBounds(48, 31, 239, 47);
 		bmiPanel.add(lblBmi);
 		bmiImage.setBorderPainted(false);
 		bmiImage.setFocusPainted(false);
-		
-		// bmi ¼³¸í Label
-		JLabel bmiInfo = new JLabel("<html>BMI´Â ÀÚ½ÅÀÇ ¸ö¹«°Ô(kg)¸¦ Å°ÀÇ Á¦°ö(m)À¸·Î ³ª´« °ªÀÔ´Ï´Ù<br>"
-				+ "*ÁÖÀÇ : ±ÙÀ°·®, À¯ÀüÀû ¿øÀÎ µî °³ÀÎÂ÷ ¹İ¿µÇÏÁö ¸øÇÒ ¼ö ÀÖ½À´Ï´Ù</html>", JLabel.LEFT);
-		bmiInfo.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+		// bmi ì„¤ëª… Label
+		JLabel bmiInfo = new JLabel("<html>BMIëŠ” ìì‹ ì˜ ëª¸ë¬´ê²Œ(kg)ë¥¼ í‚¤ì˜ ì œê³±(m)ìœ¼ë¡œ ë‚˜ëˆˆ ê°’ì…ë‹ˆë‹¤<br>"
+				+ "*ì£¼ì˜ : ê·¼ìœ¡ëŸ‰, ìœ ì „ì  ì›ì¸ ë“± ê°œì¸ì°¨ ë°˜ì˜í•˜ì§€ ëª»í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤</html>", JLabel.LEFT);
+		bmiInfo.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 13));
+
 		bmiInfo.setForeground(new Color(136,150,159));
 		bmiInfo.setBounds(300, 15, 410, 80);
 		bmiPanel.add(bmiInfo);
-		
-		// ÃÊ±âÈ­ ¹öÆ°
+
+		// ì´ˆê¸°í™” ë²„íŠ¼
 		JButton new_bmi = new JButton("\uB2E4\uC2DC\uACC4\uC0B0");
-		new_bmi.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
+		new_bmi.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 17));
 		new_bmi.setBackground(new Color(218, 226, 234));
 		new_bmi.setBorderPainted(false);
 		new_bmi.setFocusPainted(false);
@@ -772,8 +778,7 @@ class BmiFrame extends JFrame{
             pst.setString(2, CustomerDisplay.idLabel.getText());
 
             int numRows = pst.executeUpdate(); //insert, delete, 
-
-            System.out.format("bmi µî·Ï : %d°³ÀÇ ÇàÀÌ ¹Ù²¼½À´Ï´Ù.", numRows);
+            System.out.format("bmi ë“±ë¡ : %dê°œì˜ í–‰ì´ ë°”ê¼ˆìŠµë‹ˆë‹¤.", numRows);
 
             pst.close();
             conn.close();
@@ -803,17 +808,17 @@ class BmrFrame extends JFrame{
 	double bmr;
 	
 	BmrFrame() {
-		frame = new JFrame(); //frame »ı¼º
-		frame.setResizable(false); //frameÀÌ º¸ÀÌµµ·Ï ¼³Á¤
-		frame.setBounds(470, 200, 1000, 600); //frameÀÇ Å©±â ¼³Á¤
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Ã¢À» ´İµµ·Ï ÁöÁ¤
+		frame = new JFrame(); //frame ìƒì„±
+		frame.setResizable(false); //frameì´ ë³´ì´ë„ë¡ ì„¤ì •
+		frame.setBounds(470, 200, 1000, 600); //frameì˜ í¬ê¸° ì„¤ì •
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ì°½ì„ ë‹«ë„ë¡ ì§€ì •
 		frame.getContentPane().setLayout(null);
-		frame.setVisible(true); //Ã¢À» È­¸é¿¡ ³ªÅ¸³¾ °ÍÀÎÁö ¼³Á¤
-		frame.setTitle("Daily Health - bmr °è»ê"); //Å¸ÀÌÆ² ¼³Á¤
+		frame.setVisible(true); //ì°½ì„ í™”ë©´ì— ë‚˜íƒ€ë‚¼ ê²ƒì¸ì§€ ì„¤ì •
+		frame.setTitle("Daily Health - bmr ê³„ì‚°"); //íƒ€ì´í‹€ ì„¤ì •
 		
-		//ÅøÅ¶À» »ç¿ëÇÏ¿© ÀÌ¹ÌÁö ¸¸µé±â
+		//íˆ´í‚·ì„ ì‚¬ìš©í•˜ì—¬ ì´ë¯¸ì§€ ë§Œë“¤ê¸°
 		Toolkit toolkit = frame.getToolkit();
-		//jpg, gif, png Çü½ÄÀÇ ÀÌ¹ÌÁö ÆÄÀÏ¸¸ Áö¿ø
+		//jpg, gif, png í˜•ì‹ì˜ ì´ë¯¸ì§€ íŒŒì¼ë§Œ ì§€ì›
 		Image image = toolkit.createImage("./image/gym.png");
 		Image img = Toolkit.getDefaultToolkit().getImage("./image/icon.png");
 		frame.setIconImage(img); 
@@ -824,32 +829,32 @@ class BmrFrame extends JFrame{
 		bmrPanel.setLayout(null);
 		
 		JRadioButton Man = new JRadioButton("\uB0A8\uC790");
-		Man.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		Man.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 20));
 		Man.setBounds(159, 140, 77, 27);
 		bmrPanel.add(Man);
 		
 		JRadioButton Woman = new JRadioButton("\uC5EC\uC790");
-		Woman.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		Woman.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 20));
 		Woman.setBounds(159, 171, 77, 27);
 		bmrPanel.add(Woman);
 		
 		JLabel Gender = new JLabel("\uC131\uBCC4 : ");
-		Gender.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		Gender.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 		Gender.setBounds(61, 140, 69, 27);
 		bmrPanel.add(Gender);
 		
 		JLabel Weight = new JLabel("\uCCB4\uC911 : ");
-		Weight.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		Weight.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 		Weight.setBounds(61, 236, 69, 27);
 		bmrPanel.add(Weight);
 		
 		JLabel Height = new JLabel("\uD0A4(cm) : ");
-		Height.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		Height.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 		Height.setBounds(61, 312, 91, 27);
 		bmrPanel.add(Height);
 		
 		JLabel Age = new JLabel("\uB098\uC774 : ");
-		Age.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		Age.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 		Age.setBounds(61, 381, 69, 27);
 		bmrPanel.add(Age);
 		
@@ -858,21 +863,21 @@ class BmrFrame extends JFrame{
 		bmrPanel.add(Weight_t);
 		Weight_t.setColumns(10);
 		Weight_t.setText(CustomerDisplay.currentWeightLabel.getText());
-		Weight_t.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		Weight_t.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		
 		Height_t = new JTextField();
 		Height_t.setColumns(10);
 		Height_t.setBounds(159, 312, 137, 29);
 		bmrPanel.add(Height_t);
 		Height_t.setText(CustomerDisplay.heightLabel.getText());
-		Height_t.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
-		
+		Height_t.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
+    
 		Age_t = new JTextField();
 		Age_t.setColumns(10);
 		Age_t.setBounds(159, 381, 137, 29);
 		bmrPanel.add(Age_t);
 		Age_t.setText(CustomerDisplay.ageLabel.getText());
-		Age_t.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		Age_t.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 20));
 		
 		JPanel ChoicePanel = new JPanel();
 		ChoicePanel.setBackground(new Color(240, 237, 240));
@@ -885,10 +890,10 @@ class BmrFrame extends JFrame{
 		gotoMain_bmr.setBackground(new Color(218, 226, 234));
 		gotoMain_bmr.setBackground(new Color(218, 226, 234));
 //		bmrPanel.add(gotoMain_bmr);
-		gotoMain_bmr.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		gotoMain_bmr.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		
 		JButton BmrButton = new JButton("\uACC4\uC0B0\uD558\uAE30");
-		BmrButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		BmrButton.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 		BmrButton.setBackground(new Color(102, 159, 175));
 		BmrButton.setBounds(61, 463, 235, 55);
 		BmrButton.setBorderPainted(false);
@@ -903,12 +908,12 @@ class BmrFrame extends JFrame{
 		});
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 25));
 		lblNewLabel.setBounds(381, 220, 515, 69);
 		bmrPanel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uAE30\uCD08\uB300\uC0AC\uB7C9 \uAD6C\uD558\uAE30");
-		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
+		lblNewLabel_1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 30));
 		lblNewLabel_1.setBounds(61, 46, 259, 47);
 		bmrPanel.add(lblNewLabel_1);
 		
@@ -929,10 +934,10 @@ class BmrFrame extends JFrame{
 				//BmrResult.setVisible(false);
 				bmrPanel.setVisible(true);
 				int num;
-				if(Man.isSelected()==true) { //³²¼ºÀÌ ¼±ÅÃµÉ ¶§
-					num = 1;//num = 1ÀÌ´Ù
-				}else if(Woman.isSelected()==true) {//¿©¼ºÀÌ ¼±ÅÃµÉ ¶§
-					num = 2;//num = 2ÀÌ´Ù
+				if(Man.isSelected()==true) { //ë‚¨ì„±ì´ ì„ íƒë  ë•Œ
+					num = 1;//num = 1ì´ë‹¤
+				}else if(Woman.isSelected()==true) {//ì—¬ì„±ì´ ì„ íƒë  ë•Œ
+					num = 2;//num = 2ì´ë‹¤
 				}else {
 					num = 0;
 				}
@@ -941,22 +946,23 @@ class BmrFrame extends JFrame{
 						BmrResult.setVisible(false);
 					}
 					switch(num) {
-					case 1 : //numÀÌ 1ÀÏ¶§
+					case 1 : //numì´ 1ì¼ë•Œ
 						double Weight_m = Double.parseDouble(Weight_t.getText());
 						double Height_m = Double.parseDouble(Height_t.getText());
 						int Age_m = Integer.parseInt(Age_t.getText());
-						double Bmr_m = 66.47 + (13.75*Weight_m) + (5*Height_m) - (6.76*Age_m); //³²¼ºÀÏ ¶§ÀÇ ±âÃÊ´ë»ç·® °ø½Ä
-						BmrResult = new JLabel("±âÃÊ´ë»ç·®Àº " + Math.round(Bmr_m*100)/100.0 + "kcalÀÔ´Ï´Ù");
+						double Bmr_m = 66.47 + (13.75*Weight_m) + (5*Height_m) - (6.76*Age_m); //ë‚¨ì„±ì¼ ë•Œì˜ ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ ê³µì‹
+						BmrResult = new JLabel("ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ì€ " + Math.round(Bmr_m*100)/100.0 + "kcalì…ë‹ˆë‹¤");
 						bmrPanel.add(BmrResult);
-						BmrResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
+						BmrResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 25));
 						BmrResult.setBounds(370, 230, 600, 50);
-						BmrResult.setVisible(true);//·¹ÀÌºíÀ» ÀÌ¿ëÇØ ±âÃÊ´ë»ç·® °è»ê°á°ú Ãâ·ÂÇØÁØ´Ù
+						BmrResult.setVisible(true);//ë ˆì´ë¸”ì„ ì´ìš©í•´ ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ ê³„ì‚°ê²°ê³¼ ì¶œë ¥í•´ì¤€ë‹¤
 						
 						bmr = Math.round(Bmr_m*100)/100.0;
 						
-						BmrUpdate = new JButton("bmr µî·ÏÇÏ±â");
+						BmrUpdate = new JButton("bmr ë“±ë¡í•˜ê¸°");
 						bmrPanel.add(BmrUpdate);
-						BmrUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmrUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
+
 						BmrUpdate.setBounds(370, 300, 200, 60);
 						BmrUpdate.setVisible(true);
 						BmrUpdate.setForeground(Color.BLACK);
@@ -967,37 +973,37 @@ class BmrFrame extends JFrame{
 						BmrUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmr) + "¸¦ bmr Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmr µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmr) + "ë¥¼ bmr ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updatebmr(bmr) == true) {
-									JOptionPane.showMessageDialog(null, "bmr Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmr µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmr ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmrLabel.setText(String.valueOf(bmr));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmr Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmr µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmr ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
-									JOptionPane.showMessageDialog(null, "bmr Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmr µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmr ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}
 							}
 						});
-						
-						break;//µ¿ÀÛ±×¸¸
-					case 2 : //numÀÌ 2ÀÏ¶§
+					
+						break;//ë™ì‘ê·¸ë§Œ
+					case 2 : //numì´ 2ì¼ë•Œ
 						double Weight_w = Double.parseDouble(Weight_t.getText());
 						double Height_w = Double.parseDouble(Height_t.getText());
 						int Age_w = Integer.parseInt(Age_t.getText());
-						double Bmr_w = 655.1 + (9.56*Weight_w) + (1.85*Height_w) - (4.68*Age_w); //¿©¼ºÀÏ ¶§ÀÇ ±âÃÊ´ë»ç·® °ø½Ä
+						double Bmr_w = 655.1 + (9.56*Weight_w) + (1.85*Height_w) - (4.68*Age_w); //ì—¬ì„±ì¼ ë•Œì˜ ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ ê³µì‹
 						BmrResult.setLocation(1300, 600);
-						BmrResult = new JLabel("±âÃÊ´ë»ç·®Àº " + Math.round(Bmr_w*100)/100.0 + "kcalÀÔ´Ï´Ù");
+						BmrResult = new JLabel("ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ì€ " + Math.round(Bmr_w*100)/100.0 + "kcalì…ë‹ˆë‹¤");
 						bmrPanel.add(BmrResult);
-						BmrResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
+						BmrResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 25));
 						BmrResult.setBounds(370, 230, 600, 50);
-						BmrResult.setVisible(true); //·¹ÀÌºíÀ» ÀÌ¿ëÇØ ±âÃÊ´ë»ç·® °è»ê°á°ú Ãâ·ÂÇØÁØ´Ù
+						BmrResult.setVisible(true); //ë ˆì´ë¸”ì„ ì´ìš©í•´ ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ ê³„ì‚°ê²°ê³¼ ì¶œë ¥í•´ì¤€ë‹¤
 						
 						bmr = Math.round(Bmr_w*100)/100.0;
 						
-						BmrUpdate = new JButton("bmr µî·ÏÇÏ±â");
+						BmrUpdate = new JButton("bmr ë“±ë¡í•˜ê¸°");
 						bmrPanel.add(BmrUpdate);
-						BmrUpdate.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+						BmrUpdate.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 22));
 						BmrUpdate.setBounds(370, 300, 200, 60);
 						BmrUpdate.setVisible(true);
 						BmrUpdate.setForeground(Color.BLACK);
@@ -1008,33 +1014,33 @@ class BmrFrame extends JFrame{
 						BmrUpdate.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "´Ô, " + String.valueOf(bmr) + "¸¦ bmr Áö¼ö·Î µî·ÏÇÏ½Ã°Ú½À´Ï±î?", "bmr µî·ÏÇÏ±â", JOptionPane.YES_NO_OPTION);
+								int option = JOptionPane.showConfirmDialog(null, CustomerDisplay.idLabel.getText() + "ë‹˜, " + String.valueOf(bmr) + "ë¥¼ bmr ì§€ìˆ˜ë¡œ ë“±ë¡í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.YES_NO_OPTION);
 								if(option == JOptionPane.YES_OPTION && updatebmr(bmr) == true) {
-									JOptionPane.showMessageDialog(null, "bmr Áö¼ö°¡ µî·ÏµÇ¾ú½À´Ï´Ù", "bmr µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmr ì§€ìˆ˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 									CustomerDisplay.bmrLabel.setText(String.valueOf(bmr));
 									frame.dispose();
 								}else if(option == JOptionPane.NO_OPTION) {
-									JOptionPane.showMessageDialog(null, "bmr Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmr µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmr ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}else {
-									JOptionPane.showMessageDialog(null, "bmr Áö¼ö µî·ÏÀ» Ãë¼ÒÇÏ¼Ì½À´Ï´Ù", "bmr µî·ÏÇÏ±â", JOptionPane.PLAIN_MESSAGE);
+									JOptionPane.showMessageDialog(null, "bmr ì§€ìˆ˜ ë“±ë¡ì„ ì·¨ì†Œí•˜ì…¨ìŠµë‹ˆë‹¤", "bmr ë“±ë¡í•˜ê¸°", JOptionPane.PLAIN_MESSAGE);
 								}
 							}
 						});
-						
-						break;//µ¿ÀÛ±×¸¸
+						break;//ë™ì‘ê·¸ë§Œ
 					}
 				}catch(NumberFormatException ex) {
-					BmrResult = new JLabel("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+					BmrResult = new JLabel("ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 					bmrPanel.add(BmrResult);
-					BmrResult.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
+					BmrResult.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 25));
 					BmrResult.setBounds(370, 230, 600, 50);
 					BmrResult.setVisible(true); 
 					BmrResult.setForeground(Color.RED);
 				}
 			}
 		});
-		JButton new_bmr = new JButton("ÃÊ±âÈ­");
-		new_bmr.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JButton new_bmr = new JButton("ì´ˆê¸°í™”");
+		new_bmr.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
+
 		new_bmr.setBackground(new Color(218, 226, 234));
 		new_bmr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1067,8 +1073,8 @@ class BmrFrame extends JFrame{
             pst.setString(2, CustomerDisplay.idLabel.getText());
 
             int numRows = pst.executeUpdate(); //insert, delete, 
+            System.out.format("bmr ë“±ë¡ : %dê°œì˜ í–‰ì´ ë°”ê¼ˆìŠµë‹ˆë‹¤.", numRows);
 
-            System.out.format("bmr µî·Ï : %d°³ÀÇ ÇàÀÌ ¹Ù²¼½À´Ï´Ù.", numRows);
 
             pst.close();
             conn.close();
@@ -1082,4 +1088,5 @@ class BmrFrame extends JFrame{
             return false;
         }
 	}
+                                        
 }
