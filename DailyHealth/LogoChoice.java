@@ -373,7 +373,6 @@ public class LogoChoice {
 		lblDailyHealth.setForeground(new Color(54, 82, 109));
 		lblDailyHealth.setFont(new Font("맑은 고딕", Font.BOLD, 28));
 		
-		
 		//랜덤으로 명언이 뜰 수 있도록
 		String wise  = "";
 		for(int i=0; i<2; i++) { //한 번 실행할 때마다 한 개의 명언이 랜덤으로 나오도록 한다

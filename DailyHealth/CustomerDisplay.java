@@ -1,6 +1,5 @@
 package health;
 
-// import
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -56,7 +55,7 @@ public class CustomerDisplay extends JFrame{
 		frame.getContentPane().add(customerPanel);
 		customerPanel.setLayout(null);
 		
-		// 이름 label
+    // 이름 label
 		nameLabel = new JLabel("임시이름", JLabel.CENTER);
 		customerPanel.add(nameLabel);
 		nameLabel.setBounds(60, 35, 200, 70);
@@ -108,7 +107,7 @@ public class CustomerDisplay extends JFrame{
 		bmiLabel = new JLabel("bmi", JLabel.CENTER);
 		customerPanel.add(bmiLabel);
 		bmiLabel.setBounds(60, 435, 120, 40);
-		bmiLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 24));
+    bmiLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 24));
 		bmiLabel.setOpaque(true); //Opaque값을 true로 미리 설정해 주어야 배경색이 적용된다.
 		bmiLabel.setBackground(Color.pink);
 		
@@ -116,7 +115,7 @@ public class CustomerDisplay extends JFrame{
 		bmrLabel = new JLabel("bmr", JLabel.CENTER);
 		customerPanel.add(bmrLabel);
 		bmrLabel.setBounds(60, 485, 120, 40);
-		bmrLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 24));
+    bmrLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 24));
 		bmrLabel.setOpaque(true); //Opaque값을 true로 미리 설정해 주어야 배경색이 적용된다.
 		bmrLabel.setBackground(Color.pink);
 		
@@ -141,7 +140,7 @@ public class CustomerDisplay extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(Integer.parseInt(remainDaysLabel.getText()) > 0 && attend(idLabel.getText()) == true) {
-					SimpleDateFormat custom_format = new SimpleDateFormat ( "yyyy년 MM월 dd일");
+          SimpleDateFormat custom_format = new SimpleDateFormat ( "yyyy년 MM월 dd일");
 					Date time = new Date();
 					String today = custom_format.format(time);
 					JOptionPane.showMessageDialog(null, idLabel.getText() + "님, " + today + "에 정기권이 사용되었습니다", "출석체크", JOptionPane.PLAIN_MESSAGE);
@@ -152,7 +151,7 @@ public class CustomerDisplay extends JFrame{
 			}
 		});
 		
-		// 출석체크 설명
+    // 출석체크 설명
 		info = new JLabel("출석체크", JLabel.LEFT);
 		customerPanel.add(info);
 		info.setBounds(745, 50, 270, 100);
@@ -188,6 +187,7 @@ public class CustomerDisplay extends JFrame{
 			}
 		});
 		
+
 		// 화살표 버튼
 		JButton arrow = new JButton("");
 		arrow.setBounds(650, 215, 50, 50);
@@ -224,6 +224,7 @@ public class CustomerDisplay extends JFrame{
 			}
 		});
 		
+
 		// bmi 계산 버튼
 		JButton bmiBtn = new JButton("bmi 지수 계산");
 		bmiBtn.setBounds(480, 385, 250, 50);
@@ -241,13 +242,13 @@ public class CustomerDisplay extends JFrame{
 //		arrow.setContentAreaFilled(false);
 //		arrow.setFocusPainted(false);
 		
-		// bmr 계산 버튼
-		JButton bmrBtn = new JButton("기초대사량(bmr) 계산");
-		bmrBtn.setBounds(480, 455, 250, 50);
-		customerPanel.add(bmrBtn);
-		bmrBtn.setBackground(Color.green);
-		bmrBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 22));
-		bmrBtn.addActionListener(new ActionListener() {
+      // bmr 계산 버튼
+      JButton bmrBtn = new JButton("기초대사량(bmr) 계산");
+      bmrBtn.setBounds(480, 455, 250, 50);
+      customerPanel.add(bmrBtn);
+      bmrBtn.setBackground(Color.green);
+      bmrBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 22));
+      bmrBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				BmrFrame bmr = new BmrFrame();
@@ -258,7 +259,7 @@ public class CustomerDisplay extends JFrame{
 //		arrow.setContentAreaFilled(false);
 //		arrow.setFocusPainted(false);
 		
-		// 로그아웃 버튼
+    // 로그아웃 버튼
 		JButton logoutBtn = new JButton("로그아웃");
 		logoutBtn.setBounds(870, 510, 105, 35);
 		customerPanel.add(logoutBtn);
@@ -276,6 +277,7 @@ public class CustomerDisplay extends JFrame{
 		new CustomerDisplay();
 	}
 	
+
 	// 출석체크 메서드
 	public boolean attend(String id) {
 		String query;
@@ -309,6 +311,7 @@ public class CustomerDisplay extends JFrame{
         }
 	}
 	
+
 	// 현재 몸무게 변경 메서드
 	public boolean Current(String cw) {		
 		String query;
@@ -326,7 +329,6 @@ public class CustomerDisplay extends JFrame{
             pst.setString(2, idLabel.getText());
 
             int numRows = pst.executeUpdate(); //insert, delete, 
-
             System.out.format("%d개의 행이 바꼈습니다.", numRows);
 
             pst.close();
@@ -341,7 +343,7 @@ public class CustomerDisplay extends JFrame{
             return false;
         }
 	}
-	
+  
 	// 목표 몸무게 변경 메서드
 	public boolean Target(String tg) {		
 		String query;
@@ -397,7 +399,7 @@ class BmiFrame extends JFrame{
 		
 		//툴킷을 사용하여 이미지 만들기
 		Toolkit toolkit = frame.getToolkit();
-		//jpg, gif, png 형식의 이미지 파일만 지원
+		//jpg, gif, png 형식의 이미지 파일만 지원  
 		Image image = toolkit.createImage("./image/gym.png");
 		Image img = Toolkit.getDefaultToolkit().getImage("./image/icon.png");
 		frame.setIconImage(img); 
@@ -428,12 +430,14 @@ class BmiFrame extends JFrame{
 		JLabel HeightLabel = new JLabel("\uD0A4 : ");
 		HeightLabel.setBounds(48, 158, 113, 34);
 		HeightLabel.setFont(new Font("맑은 고딕", Font.BOLD, 25));
+
 		bmiPanel.add(HeightLabel);
 		
 		HeightField = new JTextField();
 		HeightField.setBounds(162, 158, 172, 35);
 		HeightField.setColumns(10);
 		HeightField.setFont(new Font("맑은 고딕", Font.PLAIN, 22));
+
 		HeightField.setText(CustomerDisplay.heightLabel.getText());
 		bmiPanel.add(HeightField);
 		
@@ -458,6 +462,7 @@ class BmiFrame extends JFrame{
 					if(BmiResult != null) {
 						BmiResult.setVisible(false);
 					}
+
 					double weight = Double.parseDouble(WeightField.getText()); //입력받은 몸무게를 변수 weight에 넣어준다
 					double height = Double.parseDouble(HeightField.getText()); //입력받은 키를 변수 height에 넣어준다
 					double var = weight/((height*(0.01))*(height*(0.01))); //Bmi지수를 구하는 공식이다
@@ -472,6 +477,7 @@ class BmiFrame extends JFrame{
 						BmiUpdate = new JButton("BMI 등록하기");
 						bmiPanel.add(BmiUpdate);
 						BmiUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 22));
+
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -500,6 +506,7 @@ class BmiFrame extends JFrame{
 						BmiResult = new JLabel(Math.round(var*100)/100.0 + " , 정상체중입니다");//레이블을 이용해 출력
 						bmiPanel.add(BmiResult);
 						BmiResult.setFont(new Font("맑은 고딕", Font.PLAIN, 27));
+
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
@@ -542,6 +549,7 @@ class BmiFrame extends JFrame{
 						BmiUpdate = new JButton("BMI 등록하기");
 						bmiPanel.add(BmiUpdate);
 						BmiUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 22));
+
 						BmiUpdate.setBounds(468, 240, 180, 80);
 						BmiUpdate.setVisible(true);
 						BmiUpdate.setForeground(Color.BLACK);
@@ -573,7 +581,6 @@ class BmiFrame extends JFrame{
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
-						
 						BmiUpdate = new JButton("BMI 등록하기");
 						bmiPanel.add(BmiUpdate);
 						BmiUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 22));
@@ -608,7 +615,7 @@ class BmiFrame extends JFrame{
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);		
 						BmiResult.setForeground(Color.BLACK);
-						
+
 						BmiUpdate = new JButton("BMI 등록하기");
 						bmiPanel.add(BmiUpdate);
 						BmiUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 22));
@@ -643,7 +650,7 @@ class BmiFrame extends JFrame{
 						BmiResult.setBounds(48, 261, 874, 43);
 						BmiResult.setVisible(true);	
 						BmiResult.setForeground(Color.BLACK);
-						
+
 						BmiUpdate = new JButton("BMI 등록하기");
 						bmiPanel.add(BmiUpdate);
 						BmiUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 22));
@@ -706,29 +713,28 @@ class BmiFrame extends JFrame{
 		bmiPanel.add(bmiImage);
 		bmiImage.setBorderPainted(false);
 		bmiImage.setFocusPainted(false);
-		
+
 		// 메인으로 화면
 		JButton gotoMain_bmi = new JButton("\uB4A4\uB85C\uAC00\uAE30");
 		gotoMain_bmi.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		gotoMain_bmi.setBackground(new Color(218, 226, 234));
 		gotoMain_bmi.setBounds(863, 12, 105, 27);
 //		bmiPanel.add(gotoMain_bmi);
-		
 		JLabel lblBmi = new JLabel("BMI 지수 구하기");
 		lblBmi.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		lblBmi.setBounds(48, 31, 239, 47);
 		bmiPanel.add(lblBmi);
 		bmiImage.setBorderPainted(false);
 		bmiImage.setFocusPainted(false);
-		
 		// bmi 설명 Label
 		JLabel bmiInfo = new JLabel("<html>BMI는 자신의 몸무게(kg)를 키의 제곱(m)으로 나눈 값입니다<br>"
 				+ "*주의 : 근육량, 유전적 원인 등 개인차 반영하지 못할 수 있습니다</html>", JLabel.LEFT);
 		bmiInfo.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+
 		bmiInfo.setForeground(new Color(136,150,159));
 		bmiInfo.setBounds(300, 15, 410, 80);
 		bmiPanel.add(bmiInfo);
-		
+
 		// 초기화 버튼
 		JButton new_bmi = new JButton("\uB2E4\uC2DC\uACC4\uC0B0");
 		new_bmi.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
@@ -772,7 +778,6 @@ class BmiFrame extends JFrame{
             pst.setString(2, CustomerDisplay.idLabel.getText());
 
             int numRows = pst.executeUpdate(); //insert, delete, 
-
             System.out.format("bmi 등록 : %d개의 행이 바꼈습니다.", numRows);
 
             pst.close();
@@ -866,7 +871,7 @@ class BmrFrame extends JFrame{
 		bmrPanel.add(Height_t);
 		Height_t.setText(CustomerDisplay.heightLabel.getText());
 		Height_t.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
-		
+    
 		Age_t = new JTextField();
 		Age_t.setColumns(10);
 		Age_t.setBounds(159, 381, 137, 29);
@@ -957,6 +962,7 @@ class BmrFrame extends JFrame{
 						BmrUpdate = new JButton("bmr 등록하기");
 						bmrPanel.add(BmrUpdate);
 						BmrUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 22));
+
 						BmrUpdate.setBounds(370, 300, 200, 60);
 						BmrUpdate.setVisible(true);
 						BmrUpdate.setForeground(Color.BLACK);
@@ -979,7 +985,7 @@ class BmrFrame extends JFrame{
 								}
 							}
 						});
-						
+					
 						break;//동작그만
 					case 2 : //num이 2일때
 						double Weight_w = Double.parseDouble(Weight_t.getText());
@@ -1020,7 +1026,6 @@ class BmrFrame extends JFrame{
 								}
 							}
 						});
-						
 						break;//동작그만
 					}
 				}catch(NumberFormatException ex) {
@@ -1035,6 +1040,7 @@ class BmrFrame extends JFrame{
 		});
 		JButton new_bmr = new JButton("초기화");
 		new_bmr.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+
 		new_bmr.setBackground(new Color(218, 226, 234));
 		new_bmr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1067,8 +1073,8 @@ class BmrFrame extends JFrame{
             pst.setString(2, CustomerDisplay.idLabel.getText());
 
             int numRows = pst.executeUpdate(); //insert, delete, 
-
             System.out.format("bmr 등록 : %d개의 행이 바꼈습니다.", numRows);
+
 
             pst.close();
             conn.close();
@@ -1082,4 +1088,5 @@ class BmrFrame extends JFrame{
             return false;
         }
 	}
+                                        
 }
